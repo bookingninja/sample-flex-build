@@ -3,7 +3,7 @@ name: Deploy Flex
 # Within this file, FEATURE and END FEATURE blocks are used only by the remove-features script.
 
 on:
-  # To run this workflow via automated triggers, see the .github/examples directory.
+  # To run this workflow via automated triggers, see the .github/extra_workflow_actions directory.
   workflow_call:
     inputs:
       environment:
@@ -30,8 +30,9 @@ on:
     inputs:
       environment:
         required: false
-        type: environment
+        # type: environment
         description: 'Environment to use for deployment'
+        default: 'dev'
       deploy_terraform:
         required: true
         type: boolean
