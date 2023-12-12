@@ -29,9 +29,9 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        required: true
+        required: false
         type: environment
-        description: "Environment to use for deployment"
+        description: 'Environment to use for deployment'
       deploy_terraform:
         required: true
         type: boolean
