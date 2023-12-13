@@ -7,12 +7,7 @@
   "custom_data": {
     "common": {
       "log_level": "info",
-      "teams": [
-        "Blue Team",
-        "Red Team",
-        "Gold Team",
-        "VIP Team"
-      ],
+      "teams": ["Blue Team", "Red Team", "Gold Team", "VIP Team"],
       "departments": [
         "General Management",
         "Marketing",
@@ -184,7 +179,7 @@
         "location": "MessageInputActions"
       },
       "keyboard_shortcuts": {
-        "enabled": true
+        "enabled": false
       },
       "custom_hold_music": {
         "enabled": false,
@@ -232,10 +227,7 @@
         "per_queue": {
           "exampleQueueSid": {
             "require_disposition": true,
-            "dispositions": [
-              "Promotional Sale",
-              "Renewal"
-            ]
+            "dispositions": ["Promotional Sale", "Renewal"]
           }
         }
       },
