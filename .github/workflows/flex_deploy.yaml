@@ -1,6 +1,9 @@
 name: Deploy Flex
 
 # Within this file, FEATURE and END FEATURE blocks are used only by the remove-features script.
+# This script was insitially written to use ENVIRONMENT variables set using GitHub environments. But
+# if using a free GitHub account, you cannot use environments. So, the script was modified to set
+# a default value in the workflow_dispatch inputs.
 
 on:
   # To run this workflow via automated triggers, see the .github/extra_workflow_actions directory.

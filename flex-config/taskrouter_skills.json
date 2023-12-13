@@ -1,12 +1,32 @@
-[{
-  "minimum": null,
-  "multivalue": false,
-  "name": "template_example_support",
-  "maximum": null
-},
-{
-  "minimum": null,
-  "multivalue": false,
-  "name": "template_example_sales",
-  "maximum": null
-}]
+[
+  {
+    "minimum": null,
+    "multivalue": false,
+    "name": "quote",
+    "maximum": null
+  },
+  {
+    "minimum": null,
+    "multivalue": false,
+    "name": "service",
+    "maximum": null
+  },
+  {
+    "minimum": null,
+    "multivalue": false,
+    "name": "projectManagement",
+    "maximum": null
+  },
+  {
+    "minimum": null,
+    "multivalue": false,
+    "name": "accounting",
+    "maximum": null
+  },
+  {
+    "minimum": null,
+    "multivalue": false,
+    "name": "franchiseInfo",
+    "maximum": null
+  }
+]
