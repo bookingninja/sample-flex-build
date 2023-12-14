@@ -9,13 +9,13 @@ The template includes a robust development environment to help you better manage
 
 Several packages are included in the template. Each package has a distinct purpose:
 
-| Package | Description |
-|---------|-------------|
-|docs|Docusaurus project that contains the documentation you are reading right now!|
-|flex-config|Manages deployment of the Flex UI configuration, which contains the settings for each feature in the template.|
-|infra-as-code|TaskRouter and Studio resource definitions for dependencies of template features. This allows managing these dependencies as code for easy deployment to an environment.|
-|plugin-flex-ts-template-v2|Twilio Flex plugin that provides the front-end logic and UI.|
-|serverless-functions|Back-end logic that the Flex plugin calls in order to securely access Twilio APIs without exposing credentials in the front-end. Also exposes functions for integrating template features outside of Flex, such as from Studio flows or other infrastructure.|
+| Package                            | Description                                                                                                                                                                                                                                                   |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| docs                               | Docusaurus project that contains the documentation you are reading right now!                                                                                                                                                                                 |
+| flex-config                        | Manages deployment of the Flex UI configuration, which contains the settings for each feature in the template.                                                                                                                                                |
+| infra-as-code                      | TaskRouter and Studio resource definitions for dependencies of template features. This allows managing these dependencies as code for easy deployment to an environment.                                                                                      |
+| flex-template-astrawatt-flex-build | Twilio Flex plugin that provides the front-end logic and UI.                                                                                                                                                                                                  |
+| serverless-functions               | Back-end logic that the Flex plugin calls in order to securely access Twilio APIs without exposing credentials in the front-end. Also exposes functions for integrating template features outside of Flex, such as from Studio flows or other infrastructure. |
 
 There may also be other packages within the repository that exist to support specific template features. See [add-ons](/building/deployment/addons) for more details on each package.
 
@@ -38,4 +38,4 @@ Now that we have a basic understanding of the structure, let's get started!
 1. If you have not already done an initial deployment of the template to your Twilio account, first [install the template](/getting-started/install-template) on your account.
 2. Then, follow the steps to [run the template locally](/getting-started/run-locally).
 3. [Set up your text editor](developer-setup) to make development more streamlined.
-3. Optionally, if you'd like to be able to pull in updates to the template from upstream in the future, [add the upstream remote](merge-future-updates#pre-requisite-add-upstream-remote).
+4. Optionally, if you'd like to be able to pull in updates to the template from upstream in the future, [add the upstream remote](merge-future-updates#pre-requisite-add-upstream-remote).

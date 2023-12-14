@@ -1,6 +1,7 @@
 ---
 title: Configuration
 ---
+
 import GithubOverrideConfig from '../../../static/img/guides/github-override-config.png';
 
 The template manages configuration in a few different ways:
@@ -14,10 +15,12 @@ The template manages configuration in a few different ways:
 ## Front-end configuration
 
 ### Hosted environment
-Generally speaking, when running the *flex-project-template* Flex plugin, configuration is loaded from the [hosted Flex configuration endpoint](https://www.twilio.com/docs/flex/developer/config/flex-configuration-rest-api#ui_attributes). When the *flex-project-template* is deployed, a [`custom_data`](#the-custom_data-object) object is injected into ui_attributes that manages configuration for each feature within the template. This deployment is performed by the flex-config package in the template.
+
+Generally speaking, when running the _flex-project-template_ Flex plugin, configuration is loaded from the [hosted Flex configuration endpoint](https://www.twilio.com/docs/flex/developer/config/flex-configuration-rest-api#ui_attributes). When the _flex-project-template_ is deployed, a [`custom_data`](#the-custom_data-object) object is injected into ui_attributes that manages configuration for each feature within the template. This deployment is performed by the flex-config package in the template.
 
 ### Local environment
-When running Flex locally, the configuration from [hosted Flex configuration](https://www.twilio.com/docs/flex/developer/config/flex-configuration-rest-api#ui_attributes) is loaded, but the configuration in `plugin-flex-ts-template-v2/public/appConfig.js` overrides anything in hosted configuration. _Note: the `appConfig.js` config is only used locally and has no bearing on a deploy or when on hosted Flex._
+
+When running Flex locally, the configuration from [hosted Flex configuration](https://www.twilio.com/docs/flex/developer/config/flex-configuration-rest-api#ui_attributes) is loaded, but the configuration in `flex-template-astrawatt-flex-build/public/appConfig.js` overrides anything in hosted configuration. _Note: the `appConfig.js` config is only used locally and has no bearing on a deploy or when on hosted Flex._
 
 :::note Initial setup
 The `appConfig.js` file is created for you as part of the initial local environment setup script, which executes when running `npm install` in the root template directory. The file is automatically populated with the feature config from the `flex-config/ui_attributes.common.json` file at the time of creation, as long as the file does not already exist.
@@ -26,9 +29,10 @@ The `appConfig.js` file is created for you as part of the initial local environm
 ### Configuration management
 
 #### The `custom_data` object
-The template maintains the configuration that is deployed to [hosted Flex configuration](https://www.twilio.com/docs/flex/developer/config/flex-configuration-rest-api#ui_attributes) in version control under the flex-config folder. Here, you will find `ui_attributes.common.json` file containing the main configuration set.  
 
-At the time of a GitHub action script deploy of the template, when an environment is provided, a new file is generated from `ui_attributes.example.json` and it is called `ui_attributes.<env-name>.json`.  After creating this file any placeholder values in the file, such as the serverless domain, are replaced as part of the GitHub deployment scripts.  The contents of this file are merged over the top of the `ui_attributes.common.json` file and the output creates the final configuration set that is pushed to the [hosted Flex configuration API](https://www.twilio.com/docs/flex/developer/config/flex-configuration-rest-api#ui_attributes).
+The template maintains the configuration that is deployed to [hosted Flex configuration](https://www.twilio.com/docs/flex/developer/config/flex-configuration-rest-api#ui_attributes) in version control under the flex-config folder. Here, you will find `ui_attributes.common.json` file containing the main configuration set.
+
+At the time of a GitHub action script deploy of the template, when an environment is provided, a new file is generated from `ui_attributes.example.json` and it is called `ui_attributes.<env-name>.json`. After creating this file any placeholder values in the file, such as the serverless domain, are replaced as part of the GitHub deployment scripts. The contents of this file are merged over the top of the `ui_attributes.common.json` file and the output creates the final configuration set that is pushed to the [hosted Flex configuration API](https://www.twilio.com/docs/flex/developer/config/flex-configuration-rest-api#ui_attributes).
 
 If you wish to provide alternate feature configurations per environment, such as IDs or for testing different settings, you may create this file yourself. Simply copy `ui_attributes.example.json` to `ui_attributes.<env-name>.json`, perform the desired changes, and commit the file to the repository. Placeholder values within this file will continue to be automatically replaced as described above during deployment.
 
@@ -52,7 +56,7 @@ The custom_data model that lives in ui_attributes follows this schema:
 ```
 
 :::note Developer Note
-  If using the add-feature script, the feature name provided may include hyphens. However, the feature name used in the custom_data will replace the hyphens with underscores to make the variable name JavaScript parser compliant.
+If using the add-feature script, the feature name provided may include hyphens. However, the feature name used in the custom_data will replace the hyphens with underscores to make the variable name JavaScript parser compliant.
 :::
 
 Ultimately, enablement of each feature is managed by this object as it appears in the [hosted Flex configuration](https://www.twilio.com/docs/flex/developer/config/flex-configuration-rest-api#ui_attributes) (or `appConfig.js` if running [locally](#local-environment))
@@ -129,11 +133,11 @@ There are two strategies for managing the configuration, which are mutually excl
 
 You can use the [admin-ui feature](/feature-library/admin-ui), which is the default management style, to manage the configuration from within the Flex UI. This method is preferable when configuration needs to be changed frequently, or when non-developers need to be able to view and update the configuration.
 
-:::tip Developer Tip 
+:::tip Developer Tip
 
-When running [locally](#local-environment), the admin-ui feature directly ignores what is in `appConfig.js` and shows only what is in [hosted Flex configuration](https://www.twilio.com/docs/flex/developer/config/flex-configuration-rest-api#ui_attributes) or what has been overridden using the [per-worker feature overrides](/feature-library/admin-ui#how-does-it-work).  This can cause confusion, and for that reason, admin-ui is disabled by default via `appConfig.js` when running the template locally.
+When running [locally](#local-environment), the admin-ui feature directly ignores what is in `appConfig.js` and shows only what is in [hosted Flex configuration](https://www.twilio.com/docs/flex/developer/config/flex-configuration-rest-api#ui_attributes) or what has been overridden using the [per-worker feature overrides](/feature-library/admin-ui#how-does-it-work). This can cause confusion, and for that reason, admin-ui is disabled by default via `appConfig.js` when running the template locally.
 
-::: 
+:::
 
 When using this strategy, configuration can still be updated from outside the Admin UI via deployment scripts. However, only _new_ configuration will be added and no existing values will be overwritten.
 
@@ -141,11 +145,10 @@ When using this strategy, configuration can still be updated from outside the Ad
 
 Alternatively, you can also choose to manage the configuration via version control. This method is preferable when change control procedures are required within your organization, as configuration is stored and managed within the code repository, and deployed as part of the standard deployment scripts.
 
-As the default management style is to use the [admin-ui feature](/feature-library/admin-ui), when doing a deploy of flex-config, it will only deploy the *net new* changes by merging the new config with that which is deployed already. To override this behavior, and deploy exactly what is in version control, you can select the `Override config set by Admin UI Panel?` option when deploying via the GitHub Actions script:
+As the default management style is to use the [admin-ui feature](/feature-library/admin-ui), when doing a deploy of flex-config, it will only deploy the _net new_ changes by merging the new config with that which is deployed already. To override this behavior, and deploy exactly what is in version control, you can select the `Override config set by Admin UI Panel?` option when deploying via the GitHub Actions script:
 
 <img src={GithubOverrideConfig} style={{width: 250}} />
 <br/><br/>
-
 
 :::tip Developer Tip
 
@@ -154,11 +157,13 @@ It is generally a good idea to disable the admin-ui feature if you are planning 
 :::
 
 ## Serverless configuration
+
 The template runs a setup script as part of the GitHub Actions deploy process (`npm run postinstall`) to automatically identify and populate any missing configuration and environment variables used by template features. This includes items such as the TaskRouter workspace SID, Chat and Sync service SIDs, TaskRouter workflow SIDs, serverless domains, and more.
 
 When the setup script is run as part of the GitHub Actions deploy process, within the serverless package, a `.env.<environment name here>` file is used if present, or generated from `.env.example` if not.
 
 ### Influencing the automatic configuration
+
 If you need to add (or modify existing) environment variables that are secrets or that differ depending on environment, you can influence the automatic configuration easily.
 
 When the setup script runs, it finds strings matching the pattern `<YOUR_VARIABLE_NAME_HERE>` in each config file it is parsing. For each variable name found this way (in our example here, the variable name is `VARIABLE_NAME_HERE`), the script will first check for an existing environment variable with that name, and use it if present. All secrets and variables configured in the GitHub environment are made available to the script as environment variables.
@@ -186,16 +191,17 @@ Let's illustrate how to use this knowledge in a practical manner:
 2. Now let's say I am adding a feature which requires a TaskRouter workflow as a dependency. The workflow is called "Feature Workflow" in each environment. The serverless function(s) for the feature will need the SID of this workflow for task creation purposes. In this case, I would perform the following:
    1. In the appropriate `.env.example` file, add a line for the new variable, which we will call `FEATURE_WORKFLOW_SID`. The new line would be `FEATURE_WORKFLOW_SID=<YOUR_FEATURE_WORKFLOW_SID>`.
    2. In the `scripts/config/mappings.json` file, add a tr-workflow mapping for the new variable:
-     ```json
-     "FEATURE_WORKFLOW_SID": {
-       "type": "tr-workflow",
-       "name": "Feature Workflow"
-     }
-     ```
+   ```json
+   "FEATURE_WORKFLOW_SID": {
+     "type": "tr-workflow",
+     "name": "Feature Workflow"
+   }
+   ```
    3. Commit the changes.
    4. Now, when I do a deploy to an environment, the setup script will fetch the SID of the TaskRouter workflow in the environment named "Feature Workflow" to populate the service's `.env` file. Nice!
 
 ### Manually define the configuration
+
 We can commit a `.env.<environment name here>` file, for example, `.env.dev`, to pre-define the environment variables. To do so, perform the following steps:
 
 1. Within the serverless directory you wish to pre-define configuration for, copy [the example `.env.example` file](https://github.com/twilio-professional-services/flex-project-template/blob/main/serverless-functions/.env.example) to a new file named `.env.<environment name here>` (for example: `.env.dev`). The environment name used here must match the environment name(s) configured in GitHub.
@@ -206,15 +212,17 @@ We can commit a `.env.<environment name here>` file, for example, `.env.dev`, to
 ## Setup script reference
 
 The setup script when run via `npm install` performs the following operations:
+
 1. Establish the Twilio account to use
 2. Automatically populate the `.env.<environment name here>` file for each package
 3. Automatically populate the `ui_attributes.<environment name here>.json` file for flex-config deployment if not running locally
-4. Create and populate the `plugin-flex-ts-template-v2/public/appConfig.js` file if running locally
+4. Create and populate the `flex-template-astrawatt-flex-build/public/appConfig.js` file if running locally
 5. Run `npm install` for each package, so that it is ready to use.
 
 Several parameters are accepted when the script is run via `npm run postinstall`, which can be used to customize the script's functionality. These parameters can be set as follows:
 
 ### overwrite
+
 By default, the script will fill placeholders in files that already exist, but if the already-filled placeholder needs to be changed, or if new variables were added, those changes would not be made. The overwrite option will always start with a fresh file based on the `example` file, allowing you to easily regenerate your environment files:
 
 ```bash
@@ -222,6 +230,7 @@ npm run postinstall -- --overwrite
 ```
 
 ### skip-install
+
 Normally the script will run `npm install` for each package. However, if you only wish to perform configuration (such as if the install has already been performed), you may skip this step as follows:
 
 ```bash
@@ -229,6 +238,7 @@ npm run postinstall -- --skip-install
 ```
 
 ### uninstall
+
 If you would like to completely remove the installed npm dependencies:
 
 ```bash
@@ -238,6 +248,7 @@ npm run postinstall -- --uninstall
 This will remove `node_modules` and `package-lock.json` within each package before dependencies are installed (unless `--skip-install` is also specified, in which case dependencies would be removed but not reinstalled).
 
 ### skip-packages
+
 This will cause the script to not process any packages (the default set or any provided via `--packages=`). This means that no environment files or installations will be performed. This is convenient to use in conjunction with the `--files=` parameter when you are using the script to process files outside or independent of a package.
 
 ```bash
@@ -245,6 +256,7 @@ npm run postinstall -- --skip-packages
 ```
 
 ### skip-env
+
 This will cause the script to not perform any environment variable population; only installation (and/or uninstallation) will be performed.
 
 ```bash
@@ -252,6 +264,7 @@ npm run postinstall -- --skip-env
 ```
 
 ### skip-plugin
+
 When the `packages` or `skip-packages` parameters are not specified, the Flex plugin package will be installed as part of the default packages. This option prevents the Flex plugin package from being installed.
 
 ```bash
@@ -259,6 +272,7 @@ npm run postinstall -- --skip-plugin
 ```
 
 ### env
+
 By default, the script will assume you are running locally and not deploying to a specific environment. When running in CI, the `ENVIRONMENT` env var is set, which the script uses to determine the environment being deployed. However, you can override this behavior by specifying an environment manually as follows:
 
 ```bash
@@ -266,9 +280,11 @@ npm run postinstall -- --env=dev
 ```
 
 ### packages
+
 The setup script, by default, will automatically perform its steps for the following packages:
+
 - flex-config
-- plugin-flex-ts-template-v2
+- flex-template-astrawatt-flex-build
 - serverless-functions
 - serverless-schedule-manager
 - web-app-examples/twilio-video-demo-app
@@ -282,6 +298,7 @@ npm run postinstall -- --packages=flex-config,serverless-schedule-manager
 This is ignored if the `--skip-packages` parameter is also specified.
 
 ### files
+
 In most cases, the setup script is used for processing packages. However, you may wish to populate variables within individual files outside or independent of a package. To do so, provide the path of the "example" file containing placeholders. The script will create a copy of the file with the placeholders filled, and the `example` in the filename replaced with the current environment (if none is specified, `local` is used).
 
 You can provide a comma-separated list of files as follows:

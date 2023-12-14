@@ -2,7 +2,7 @@
 title: Task attribute updates
 ---
 
-Location: `plugin-flex-ts-template-v2/src/utils/serverless/TaskRouter/TaskRouterService.ts`
+Location: `flex-template-astrawatt-flex-build/src/utils/serverless/TaskRouter/TaskRouterService.ts`
 
 Flex provides a few methods out-of-the-box to modify task attributes. However, these methods do not take in to consideration the fact that multiple features may wish to change attributes at the same time, such as in response to an action or event. Unfortunately, using the out-of-box methods can hit race conditions resulting in lost attributes.
 
@@ -14,7 +14,7 @@ You can use the `updateTaskAttributes` function of `TaskRouterService` to robust
 
 ```js
 const attributes = {
-  my_custom_attribute: "Hello world",
+  my_custom_attribute: 'Hello world',
 };
 
 try {
