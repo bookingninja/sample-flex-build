@@ -1,2 +1,2 @@
-tfstate_service_name=tfstate
+tfstate_service_name=tfstate-astrawatt-flex-build
 tfstate_version=2

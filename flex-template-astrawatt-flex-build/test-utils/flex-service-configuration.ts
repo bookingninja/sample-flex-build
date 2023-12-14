@@ -22,7 +22,7 @@ const mockedUiAttributes: UIAttributes = {
   custom_data: {
     serverless_functions_protocol: 'https',
     serverless_functions_port: '443',
-    serverless_functions_domain: 'mockServerlessFunctionsDomain',
+    serverless_functions_domain_astrawatt_flex_build_flex_build: 'mockServerlessFunctionsDomain',
     language: 'default',
     features: {},
   },

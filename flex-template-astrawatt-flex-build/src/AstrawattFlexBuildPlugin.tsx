@@ -3,9 +3,9 @@ import { FlexPlugin } from '@twilio/flex-plugin';
 
 import { initFeatures } from './utils/feature-loader';
 
-const PLUGIN_NAME = 'FlexTSTemplatePlugin';
+const PLUGIN_NAME = 'AstrawattFlexBuild';
 
-export default class FlexTSTemplatePlugin extends FlexPlugin {
+export default class AstrawattFlexBuild extends FlexPlugin {
   constructor() {
     super(PLUGIN_NAME);
   }

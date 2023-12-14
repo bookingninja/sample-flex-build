@@ -1,5 +1,6 @@
 name: Checks
 
+# This file is used to run the linting and testing workflows for the repo.
 # Within this file, FEATURE and END FEATURE blocks are used only by the remove-features script.
 
 on:
@@ -11,7 +12,7 @@ on:
     branches:
       - main
     paths:
-      - 'plugin-flex-ts-template-v2/**'
+      - 'flex-template-astrawatt-flex-build/**'
       - 'serverless-functions/**'
       - 'addons/**'
   # Enable running this workflow manually from the Actions tab
@@ -41,8 +42,8 @@ jobs:
         id: annotate
         uses: ataylorme/eslint-annotate-action@v2
         with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
-          report-json: "eslint_report.json"
+          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          report-json: 'eslint_report.json'
       - name: Comment on error
         uses: mshick/add-pr-comment@v2
         if: always() && steps.annotate.outputs.errorCount > 0
@@ -73,13 +74,13 @@ jobs:
         with:
           node-version: '18'
       - name: Install packages
-        working-directory: ./plugin-flex-ts-template-v2
+        working-directory: ./flex-template-astrawatt-flex-build
         run: npm install
       - name: Run tests
-        working-directory: ./plugin-flex-ts-template-v2
+        working-directory: ./flex-template-astrawatt-flex-build
         run: npm run test:ci
       - name: Publish test results
         uses: mikepenz/action-junit-report@v4
         if: always()
         with:
-          report_paths: './plugin-flex-ts-template-v2/test-results/junit.xml'
+          report_paths: './flex-template-astrawatt-flex-build/test-results/junit.xml'

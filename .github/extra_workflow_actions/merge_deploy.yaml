@@ -1,7 +1,7 @@
 name: Deploy Flex on Merge
 
-# This is an example workflow for automatically triggered deployments
-# Copy this file to the workflows directory to use it
+# Use this for automatically triggered deployments
+# Copy this file to the workflows directory. When a new commit is made to the repo, this workflow will be triggered and automatically deploy to Flex.
 
 on:
   push:

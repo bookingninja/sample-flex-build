@@ -9,7 +9,7 @@ var appConfig = {
   custom_data: {
     serverless_functions_protocol: 'http',
     serverless_functions_port: '3001',
-    serverless_functions_domain: 'localhost',
+    serverless_functions_domain_astrawatt_flex_build_flex_build: 'localhost',
     common: {},
     features: {},
   },

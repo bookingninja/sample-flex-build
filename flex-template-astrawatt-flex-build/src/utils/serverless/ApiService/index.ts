@@ -21,7 +21,7 @@ export default abstract class ApiService {
   constructor() {
     const custom_data = getFeatureFlags() || {};
 
-    // use serverless_functions_domain from ui_attributes, or .env or set as undefined
+    // use serverless_functions_domain_astrawatt_flex_build_flex_build from ui_attributes, or .env or set as undefined
 
     this.serverlessProtocol = 'https';
     this.serverlessDomain = '';
@@ -29,13 +29,13 @@ export default abstract class ApiService {
     if (process.env?.FLEX_APP_SERVERLESS_FUNCTONS_DOMAIN)
       this.serverlessDomain = process.env?.FLEX_APP_SERVERLESS_FUNCTONS_DOMAIN;
 
-    if (custom_data?.serverless_functions_domain) this.serverlessDomain = custom_data.serverless_functions_domain;
+    if (custom_data?.serverless_functions_domain_astrawatt_flex_build_flex_build) this.serverlessDomain = custom_data.serverless_functions_domain_astrawatt_flex_build_flex_build;
 
     if (custom_data?.serverless_functions_protocol) this.serverlessProtocol = custom_data.serverless_functions_protocol;
 
     if (custom_data?.serverless_functions_port) this.serverlessDomain += `:${custom_data.serverless_functions_port}`;
 
-    if (!this.serverlessDomain) console.error('serverless_functions_domain is not set in flex config or env file');
+    if (!this.serverlessDomain) console.error('serverless_functions_domain_astrawatt_flex_build_flex_build is not set in flex config or env file');
   }
 
   protected buildBody(encodedParams: EncodedParams): string {
