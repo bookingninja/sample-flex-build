@@ -7,7 +7,12 @@
   "custom_data": {
     "common": {
       "log_level": "info",
-      "teams": ["Blue Team", "Red Team", "Gold Team", "VIP Team"],
+      "teams": [
+        "Blue Team",
+        "Red Team",
+        "Gold Team",
+        "VIP Team"
+      ],
       "departments": [
         "General Management",
         "Marketing",
@@ -227,16 +232,15 @@
         "per_queue": {
           "exampleQueueSid": {
             "require_disposition": true,
-            "dispositions": ["Promotional Sale", "Renewal"]
+            "dispositions": [
+              "Promotional Sale",
+              "Renewal"
+            ]
           }
         }
       },
       "emoji_picker": {
         "enabled": true
-      },
-      "attribute_viewer": {
-        "enabled": true,
-        "enabled_for_agents": false
       },
       "admin_ui": {
         "enabled": true

@@ -3,8 +3,7 @@
     "serverless_functions_domain_astrawatt_flex_build": "<YOUR_SERVERLESS_DOMAIN>",
     "features": {
       "activity_skill_filter": {
-        "rules": {
-        }
+        "rules": {}
       },
       "schedule_manager": {
         "serverless_domain": "<YOUR_SCHEDULE_MANAGER_DOMAIN>"
